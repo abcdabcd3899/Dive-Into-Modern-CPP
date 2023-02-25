@@ -1,0 +1,117 @@
+// https://code.visualstudio.com/docs/editor/tasks
+// https://code.visualstudio.com/docs/editor/variables-reference
+{
+    "tasks": [
+		{
+			"label": "cmake",
+			"type": "shell",
+			"command": "cmake",
+			"args": [
+				"-DCMAKE_BUILD_TYPE=Debug",
+				".."
+			],
+			"options": {
+				"cwd": "build"
+			},
+			"group": "build",
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			},
+			"dependsOn": [
+				"mkbuild"
+			]
+		},
+		{
+			"label": "mkbuild",
+			"type": "shell",
+			"command": "mkdir",
+			"args": [
+				"-p",
+				"build"
+			],
+			"group": "build",
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			}
+		},
+		{
+			"label": "rmbuild",
+			"type": "shell",
+			"command": "rm",
+			"args": [
+				"-rf",
+				"build"
+			],
+			"group": "build",
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			}
+		},
+		{
+			"label": "compile",
+			"type": "shell",
+			"command": "cmake --build .",
+			"options": {
+				"cwd": "build"
+			},
+			"group": "build",
+			"presentation": {
+				"reveal": "always",
+				"clear": true
+			}
+		},
+		{
+			"label": "run",
+			"type": "shell",
+			"command": "${cwd}/build/dp8",
+			"group": "build",
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			},
+			"options": {
+				"cwd": "build"
+			},
+			"dependsOn": [
+				"compile"
+			]
+		},
+		{
+			"label": "clean",
+			"type": "shell",
+			"command": "make clean",
+			"group": "build",
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			},
+			"options": {
+				"cwd": "build"
+			}
+		},
+	],
+    "version": "2.0.0"
+}
