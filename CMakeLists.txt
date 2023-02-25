@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # 设置PROJECT_NAME变量
-set(PROJECT_NAME DIVE_INTO_MODERN_CPP)
+set(PROJECT_NAME Dive-Into-Modern-CPP)
 
 # 设置工程名
 project (${PROJECT_NAME})

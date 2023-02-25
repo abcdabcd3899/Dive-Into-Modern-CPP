@@ -57,14 +57,14 @@ If you may add the different cpp files, you should add executable file in `CMake
 
 ### Standard Library
 
-* SL1 std::optional [Document](https://zh.cppreference.com/w/cpp/utility/optional) [Document](https://blog.csdn.net/hhdshg/article/details/103433781) [Code](https://github.com/abcdabcd3899/Dive_Into_Modern_CPP/blob/main/sl1_optional.cpp)
-* SL2 std::bind and std::function bind everythings [Code](https://github.com/abcdabcd3899/Dive_Into_Modern_CPP/blob/main/sl2_bind_function.cpp)
+* SL1 std::optional [Document](https://zh.cppreference.com/w/cpp/utility/optional) [Document](https://blog.csdn.net/hhdshg/article/details/103433781) [Code](https://github.com/abcdabcd3899/Dive-Into-Modern-CPP/blob/main/sl1_optional.cpp)
+* SL2 std::bind and std::function bind everythings [Code](https://github.com/abcdabcd3899/Dive-Into-Modern-CPP/blob/main/sl2_bind_function.cpp)
 * SL3 hash<T>
 * SL4 Allocator
 * SL5 std::any [Document](https://github.com/abcdabcd3899/Dive-Into-Modern-CPP/blob/main/sl5_any.md) [Code](https://github.com/abcdabcd3899/Dive-Into-Modern-CPP/blob/main/sl5_any.cpp)
 * SL6 std::variant and union [Document](https://zh.cppreference.com/w/cpp/utility/variant)
 * SL7 std::string [Code](https://github.com/abcdabcd3899/Dive-Into-Modern-CPP/blob/main/sl7_my_string.cpp)
-* SL8 std::invoke call everythings [Code](https://github.com/abcdabcd3899/Dive_Into_Modern_CPP/blob/main/sl8_invoke.cpp)
+* SL8 std::invoke call everythings [Code](https://github.com/abcdabcd3899/Dive-Into-Modern-CPP/blob/main/sl8_invoke.cpp)
 
 ### Design Pattern and Idiom
 
@@ -82,12 +82,12 @@ If you may add the different cpp files, you should add executable file in `CMake
 * MM1 class memory layout [imgs1](https://github.com/abcdabcd3899/Dive-Into-Modern-CPP/blob/main/imgs/memory_align_1.jpeg) [imgs2](https://github.com/abcdabcd3899/Dive-Into-Modern-CPP/blob/main/imgs/memory_align_2.jpeg) [Code](https://github.com/abcdabcd3899/Dive-Into-Modern-CPP/blob/main/mm1_memory_layout.cpp)
 * MM2 object layout and EBCO [Code](https://github.com/abcdabcd3899/Dive-Into-Modern-CPP/blob/main/mm2_object_layout_ebco.cpp)
 * MM3 virtual function layout
-* MM4 smart pointer [Document](https://github.com/abcdabcd3899/Dive-Into-Modern-CPP/blob/main/smart-pointer/mm4_smart_pointer.md) [unique_ptr](https://github.com/abcdabcd3899/Dive_Into_Modern_CPP/blob/main/smart_pointer/mm4_smart_pointer_unique.cpp) [shared_ptr](https://github.com/abcdabcd3899/Dive_Into_Modern_CPP/blob/main/smart_pointer/mm4_smart_pointer_shared.cpp) [Nest Smart Pointer](https://github.com/abcdabcd3899/Dive_Into_Modern_CPP/blob/main/smart_pointer/nest_smart_pointer.cpp)
+* MM4 smart pointer [Document](https://github.com/abcdabcd3899/Dive-Into-Modern-CPP/blob/main/smart-pointer/mm4_smart_pointer.md) [unique_ptr](https://github.com/abcdabcd3899/Dive-Into-Modern-CPP/blob/main/smart_pointer/mm4_smart_pointer_unique.cpp) [shared_ptr](https://github.com/abcdabcd3899/Dive-Into-Modern-CPP/blob/main/smart_pointer/mm4_smart_pointer_shared.cpp) [Nest Smart Pointer](https://github.com/abcdabcd3899/Dive-Into-Modern-CPP/blob/main/smart_pointer/nest_smart_pointer.cpp)
 * MM5 move semantics
 
 ### Template Techniques
 
-* TT1 Template Specialization [Code](https://github.com/abcdabcd3899/Dive_Into_Modern_CPP/blob/main/tt1_template_specialization.cpp)
+* TT1 Template Specialization [Code](https://github.com/abcdabcd3899/Dive-Into-Modern-CPP/blob/main/tt1_template_specialization.cpp)
 
 #### Concepts
 

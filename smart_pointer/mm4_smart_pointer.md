@@ -46,22 +46,22 @@ public:
 	{
 		std::cout << "Widget dtor" << std::endl;
 	}
-	
+
 	// 永远不要返回 this 指针的 unique_ptr，这会导致运行时错误
 	// std::unique_ptr<Widget> getWidget(){
 	// 	return std::unique_ptr<Widget>(this);
 	// }
 };
 
-struct DeleteWithLog { 
+struct DeleteWithLog {
 	// int data {0};
-	void operator()(Widget* w) { 
+	void operator()(Widget* w) {
 		delete w;
 		std::cout<<"------ DeleteWithLog delete w"<<std::endl;
-	} 
+	}
 };
 
-void deleteFunction(Widget* w) { 
+void deleteFunction(Widget* w) {
 	delete w;
 	std::cout<<"------ deleteFunction delete w"<<std::endl;
 }
@@ -75,7 +75,7 @@ std::unique_ptr<Widget> getWidgetPtr()
 void process(Widget* p)
 {
 
-} 
+}
 ```
 
 
@@ -110,7 +110,7 @@ int main(){
 		std::unique_ptr<Widget> t{&wt};
 
 		w1->print();
-		std::cout << sizeof(w1) << std::endl; 
+		std::cout << sizeof(w1) << std::endl;
 	}
 	std::cout<<"------ default delete"<<std::endl;
 	return 0;
@@ -120,12 +120,12 @@ int main(){
 * item 3: unique_ptr 在栈中占 8 Byte，一旦传入包含数据成员的可调用对象，其大小会发生变化.
 
 ```C++
-struct DeleteWithLog { 
+struct DeleteWithLog {
 	// int data;  // 一旦解开这个数据成员，智能指针的大小将是自己的 8 Byte + data + 对齐
-	void operator()(Widget* w) { 
+	void operator()(Widget* w) {
 		delete w;
 		std::cout<<"------ DeleteWithLog delete w"<<std::endl;
-	} 
+	}
 };
 
 //int DeleteWithLog::data=0;
@@ -138,29 +138,29 @@ int main(){
 		// 如果 DeleteWithLog 不含有数据成员，那么因为 EBCO 大小还是 8 Byte
 		std::unique_ptr<Widget,DeleteWithLog> w2(new Widget(10,20,30), dw);
 		w2->print();
-		std::cout << sizeof(w2) << std::endl; 
+		std::cout << sizeof(w2) << std::endl;
 	}
 
 	int data1,data2,data3;
 	{
 		// 使用 lambda 表达式作为 delete policy
-		auto lambda = [=](Widget* w) { 
+		auto lambda = [=](Widget* w) {
 			std::cout<<data1<<data2<<data3<<std::endl;
-			delete w; 
+			delete w;
 			std::cout<<"------ lambda delete w"<<std::endl;
 		};
 		std::unique_ptr<Widget, decltype(lambda)> w3(new Widget(100,200,300), lambda);
 		w3->print();
-		std::cout << sizeof(w3) << std::endl; 
+		std::cout << sizeof(w3) << std::endl;
 	}
 
 	{
 		// 使用 std::function 作为 delete policy
 		using DeleteFunction = std::function<void(Widget*)>;
-		std::unique_ptr<Widget, DeleteFunction> 
+		std::unique_ptr<Widget, DeleteFunction>
 			w4(new Widget(1000,2000,3000), deleteFunction);
 		w4->print();
-		std::cout << sizeof(w4) << std::endl; 
+		std::cout << sizeof(w4) << std::endl;
 	}
 }
 ```
@@ -168,12 +168,12 @@ int main(){
 * item 4: unique_ptr 能够传递 delete policy，并且它会继承 delete policy. 如果非要定义删除策略，使用不带数据成员的 functor，它没有额外的存储代价.
 
 ```C++
-struct DeleteWithLog { 
+struct DeleteWithLog {
 	// int data {0};  // 一旦解开这个数据成员，智能指针的大小将是自己的 8 Byte + data + 对齐
-	void operator()(Widget* w) { 
+	void operator()(Widget* w) {
 		delete w;
 		std::cout<<"------ DeleteWithLog delete w"<<std::endl;
-	} 
+	}
 };
 
 int main(){
@@ -187,9 +187,9 @@ int main(){
 	int data1,data2,data3;
 	{
 		// 使用 lambda 表达式作为 delete policy
-		auto lambda = [=](Widget* w) { 
+		auto lambda = [=](Widget* w) {
 			std::cout<<data1<<data2<<data3<<std::endl;
-			delete w; 
+			delete w;
 			std::cout<<"------ lambda delete w"<<std::endl;
 		};
 		std::unique_ptr<Widget, decltype(lambda)> w3(new Widget(100,200,300), lambda);
@@ -199,17 +199,17 @@ int main(){
 	{
 		// 使用 std::function 作为 delete policy std::function 本身是有代价的，最小 40 Byte
 		using DeleteFunction = std::function<void(Widget*)>;
-		std::unique_ptr<Widget, DeleteFunction> 
+		std::unique_ptr<Widget, DeleteFunction>
 			w4(new Widget(1000,2000,3000), deleteFunction);
 		w4->print();
 	}
 
 	{
 		// 使用函数指针,函数指针大小为 8 Byte
-		std::unique_ptr<Widget, void(*)(Widget*)> 
+		std::unique_ptr<Widget, void(*)(Widget*)>
 			w4(new Widget(1000,2000,3000), deleteFunction);
 		w4->print();
-		std::cout << sizeof(w4) << std::endl; 
+		std::cout << sizeof(w4) << std::endl;
 	}
 }
 ```
@@ -224,7 +224,7 @@ int main(){
 		// 但是 unique_ptr(pointer __p) 被声明为 explicit
 		// 阻止了这种隐式转换的发生
 		// std::unique_ptr<Widget> w0 = new Widget(1,2,3);
-		
+
 		Widget* pw=new Widget(1,2,3);
 		std::unique_ptr<Widget> w1{pw};
 		// std::unique_ptr<Widget> w2{w1};  // 这里实际上调用了 unique_ptr 的拷贝构造函数,unique_ptr 的拷贝构造函数已经被 delete 了
@@ -313,7 +313,7 @@ struct Sub : public Base
 {
 	void process()  override{
 		//Base::process();
-		std::cout << "Sub.process()"<<std::endl; 
+		std::cout << "Sub.process()"<<std::endl;
 	}
 
 	void invoke(){
@@ -329,7 +329,7 @@ struct Sub : public Base
 * item 9: unique_ptr 支持多态，多态类型转换时要先 release 释放所有权，否则会产生运行时错误，double free 同一个堆内存
 
 ```C++
-int main(){	
+int main(){
 	std::unique_ptr<Base> b3 = std::make_unique<Sub>();   // b3 是 Sub
 	// std::unique_ptr<Sub>  s2 { dynamic_cast<Sub*>(b3.get()) };  // 这是运行时错误 因为 b3.get 拿到的这个裸指针被 b3 和 s2 同时管理了所有权，这不符合 unique_ptr 独占所有权的特性
 	std:: unique_ptr<Sub>  s2 ( dynamic_cast<Sub*>(b3.release()));  // 而 shared_ptr 提供了四个多态转型函数，且这四个函数只能在 shared_ptr 上用
@@ -352,7 +352,7 @@ int main(){
 ```C++
 #include <iostream>
 #include <memory>
- 
+
 using namespace std;
 
 
@@ -410,10 +410,10 @@ void process3(Widget* w)
 
 // 可行，不常用：打算重新指向别的对象，该参数是智能指针的引用
 // 不会移动所有权，但是 w 的改变同样会导致实际参数的修改
-void process4(unique_ptr<Widget>& w); 
+void process4(unique_ptr<Widget>& w);
 
 // 不推荐： 通常不是想要的，这里的引用没有任何作用了
-void process5(const unique_ptr<Widget>&); 
+void process5(const unique_ptr<Widget>&);
 
 int main()
 {
@@ -560,7 +560,7 @@ namespace test_shared_cast{
 	}
 }
 ```
-[转型过程中的所有权抢夺问题](https://github.com/abcdabcd3899/Dive_Into_Modern_CPP/blob/main/imgs/shared_ptr_conflict.png)
+[转型过程中的所有权抢夺问题](https://github.com/abcdabcd3899/Dive-Into-Modern-CPP/blob/main/imgs/shared_ptr_conflict.png)
 
 **所以，请注意 shared_ptr 多态转型提供了下面四个函数**:
 
@@ -621,7 +621,7 @@ namespace test_shared_init{
 		std::cout << "number of allocated: " << nallocated << std::endl;  // 2
 		std::cout << "number of deallocated: " << dallocated << std::endl; // 2
 		std::cout << "--------" << std::endl;
-		
+
 		{
 			std::shared_ptr<MyClass> sp2 = std::make_shared<MyClass>();
 		}

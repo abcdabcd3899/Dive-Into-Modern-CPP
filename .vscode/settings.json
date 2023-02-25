@@ -83,5 +83,10 @@
         "__tree": "cpp",
         "set": "cpp"
     },
-    "C_Cpp.errorSquiggles": "Disabled"
+    "C_Cpp.errorSquiggles": "Disabled",
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#5A1025",
+        "titleBar.activeBackground": "#7E1633",
+        "titleBar.activeForeground": "#FEFBFC"
+    }
 }
